@@ -6,13 +6,6 @@ from .models import Comment
 from .serializers import CommentSerializer
 
 
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def get_all_comments(requests):
-    comments = Comment.objects.all()
-    serializer = CommentSerializer(comments, many=True)
-    return Response(serializer.data)
-
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def user_comments(request):
