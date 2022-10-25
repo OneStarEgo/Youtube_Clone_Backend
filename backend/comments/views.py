@@ -20,3 +20,11 @@ def user_comments(request):
         comments= Comment.objects.filter(user_id=request.user.id)
         serializer= CommentSerializer(comments, many=True)
         return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def video_comments(request,video_id):
+    if request.method == 'GET':
+        comments = Comment.objects.filter(video_id=video_id)
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

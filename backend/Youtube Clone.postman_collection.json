@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "8447a058-8349-4a06-88ac-6dabde63b1cb",
+		"name": "Youtube Clone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21910006"
+	},
+	"item": [
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "User Comments (protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY2NjIzMDE2LCJpYXQiOjE2NjU3NTkwMTYsImp0aSI6ImRkOGFmMjZmZWM0NTQ1NzViMjc2ODdlMDkzM2QzNWU2IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJCYXJ0VGhlU2hhcmsiLCJmaXJzdF9uYW1lIjoiQmFydCJ9.PlIB0kpbYOqDkgf3mjgWbW24JOcXHF3cZ1oYySKZqc0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New_User_Comments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY2NjIzMDE2LCJpYXQiOjE2NjU3NTkwMTYsImp0aSI6ImRkOGFmMjZmZWM0NTQ1NzViMjc2ODdlMDkzM2QzNWU2IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJCYXJ0VGhlU2hhcmsiLCJmaXJzdF9uYW1lIjoiQmFydCJ9.PlIB0kpbYOqDkgf3mjgWbW24JOcXHF3cZ1oYySKZqc0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"video_id\": \"hwbwjmx\",\r\n    \"text\": \"Kinda Good\",\r\n    \"likes\": 0,\r\n    \"dislikes\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login_User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"BartTheShark\",\r\n    \"password\": \"pa55w0rd!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"BartTheShark\",\r\n    \"password\": \"pa55w0rd!\",\r\n    \"email\": \"BigBart@hotmail.com\",\r\n    \"first_name\": \"Bart\",\r\n    \"last_name\": \"Kwan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
