@@ -13,7 +13,7 @@ const HomePage = () => {
   const [user, token] = useAuth();
 
   // rest is cars demo, can delete but reccomded to comment out first so you can use it as a ref if needed
-  const [cars, setCars] = useState([]);
+  const [videos, setVideos] = useState([]);
 
 
   // things to go on this page
@@ -21,29 +21,29 @@ const HomePage = () => {
   // a form so user can enter a search term click button to ping YouTube api for that term
   // when user clicks on thumbnail it should rout them to VideoPage, this is a page you will need to make and look at app.js for router ref
   useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
+    const fetchVideos= async () => {
+      try { 
+        let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=reactmongoose&key=AIzaSyCziY9ZsfE7OyP7i2p-gWRF2vPrh7ZpO_Q&part=snippet&type=video&maxResults=5", {
           headers: {
             Authorization: "Bearer " + token,
           },
         });
-        setCars(response.data);
+        setVideos(response.data);
       } catch (error) {
         console.log(error.response.data);
       }
     };
-    fetchCars();
+    fetchVideos();
   }, [token]);
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
       <Link to="/searchforvideo">Search For Video!</Link>
 
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
+      {videos &&
+        videos.map((video) => (
+          <p key={video.id}>
+            {video.videoId} {video.title} {video.channelTitle}
           </p>
         ))}
     </div>
