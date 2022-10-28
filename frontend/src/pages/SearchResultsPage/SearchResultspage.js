@@ -17,17 +17,18 @@ const SearchResultsPage = () => {
     const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, searchForVideos)
 
     async function searchForVideos(){
-        try {
-            let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=reactmongoose&key=AIzaSyCziY9ZsfE7OyP7i2p-gWRF2vPrh7ZpO_Q&part=snippet&type=video&maxResults=5", formData, {
-                headers: {
-                    Authorization: 'Bearer ' + token
-                }
-            })
-            navigate("/")
-        } catch (error) {
-            console.log(error.message)
+        console.log(user)
+        // try {
+        //     let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=reactmongoose&key=AIzaSyCziY9ZsfE7OyP7i2p-gWRF2vPrh7ZpO_Q&part=snippet&type=video&maxResults=5", formData, {
+        //         headers: {
+        //             Authorization: 'Bearer ' + token
+        //         }
+        //     })
+        //     navigate("/")
+        // } catch (error) {
+        //     console.log(error.message)
             
-        }
+        // }
     }
 
 
