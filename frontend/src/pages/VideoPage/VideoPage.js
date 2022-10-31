@@ -5,7 +5,11 @@ import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 
 
-//let initialValues = {
+const VideoPage = (props) => {
+    return (
+        <div>This is the Video Page</div>
+    )
+}
 
 
-//}
+export default VideoPage;

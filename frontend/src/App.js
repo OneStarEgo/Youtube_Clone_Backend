@@ -6,6 +6,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import VideoPage from "./pages/VideoPage/VideoPage";
 // import SearchResultsPage from "./pages/SearchResultsPage/SearchResultspage";
 
 // Component Imports
@@ -30,7 +31,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/searchforvideo" element={<PrivateRoute><SearchResultsPage /></PrivateRoute>} /> */}
+        { <Route path="/video" element={<PrivateRoute><VideoPage /></PrivateRoute>} /> }
       </Routes>
       <Footer />
     </div>
