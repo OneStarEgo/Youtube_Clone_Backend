@@ -5,24 +5,24 @@ import VideoMapper from "../../components/VideoMapper/VideoMapper";
 
 const VideoPage = (props) => {
     const [videos, setVideos] = useState([]);
-    const [vidID, setVidID] = useState("")
+    const [vidID, setVidID] = useState("zAe5n2F3IQI")
     const getVids = async()=>{
-        await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet &relatedToVideoId=Mfp94RjugWQ&type=video&maxResults=5&key=${API_KEY}`)
+        await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideo=zAe5n2F3IQItype=video&maxResults=5&key=${API_KEY}`)
                     .then(res => {setVideos(res.data.items)})
     }
 
     return (
         <div>
-            <button onClick={()=> {getVids()}}>Get Vids</button>
             <iframe
                 title="main-vid-playe"
                 id="ytplayer"
                 type="text/html"
                 width="640"
                 height="360"
-                src={`https://www.youtube.com/embed/${props.vidID}?autoplay=1&origin=http://example.com`}
+                src={`https://www.youtube.com/embed/${vidID}?autoplay=1&origin=http://example.com`}
                 frameBorder="0"
             ></iframe>
+            <button onClick={()=> {getVids()}}>Get Related Videos</button>
             <div>
                 <VideoMapper videoArray={videos} />
             </div>
