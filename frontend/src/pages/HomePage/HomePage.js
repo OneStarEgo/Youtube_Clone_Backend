@@ -32,13 +32,12 @@ const HomePage = () => {
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
       <SearchBar fetchVideos={fetchVideos}/>
-      {/* <Link to="/searchforvideo">Search For Video!</Link> */}
 
       {videos &&
         videos.map((video, index) => (
           <p key={index}>
              {video.snippet.title} 
-             <a href="/video"><img src={video.snippet.thumbnails.medium.url}/></a>
+             <Link to={`/video/${video.snippet.videoId}`}><img src={video.snippet.thumbnails.medium.url}/></Link>
              {video.snippet.description}
           </p>
         ))}

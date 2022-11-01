@@ -31,7 +31,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/video" element={<PrivateRoute><VideoPage /></PrivateRoute>} /> 
+        <Route path="/video/:videoId" element={<PrivateRoute><VideoPage /></PrivateRoute>} /> 
       </Routes>
       <Footer />
     </div>

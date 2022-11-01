@@ -57,10 +57,3 @@ button:hover {
   font-size: 17px;
 }
 
-.x{
-  width: 600px;
-  padding: 1rem;
-  display: grid;
-  place-content: center;
-  background-color: blue;
-}
