@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const VideoPage = (props) => {
     const [videos, setVideos] = useState([]);
-    const { videoId } = useParams();
+    const { videoId, video_id } = useParams();
     const [relatedVideos, setRelatedVideos] = useState([]);
     const [comments, setComments] = useState([]);
 
@@ -23,7 +23,7 @@ const VideoPage = (props) => {
 
     const getComments = async()=>{
         try{
-            let response = await axios.get(`https://youtube.googleapis.com/youtube/v3/comments?part=snippet&parentId=${videoId}&key=${API_KEY}`)
+            let response = await axios.get(`http://127.0.0.1:8000/api/comments/${video_Id}/`)
             setComments(response.data)
         }catch(error){
             console.log(error.response.data)
@@ -44,6 +44,9 @@ const VideoPage = (props) => {
             ></iframe>
             <button onClick={()=> {getRelatedVids()}}>Get Related Videos</button>
             <button onClick={()=> {getComments()}}>Comments</button>
+            {/* <div>
+                <CommentSection /> 
+            </div> */}
             <div>
                 <VideoMapper videoArray={relatedVideos} />
             </div>
