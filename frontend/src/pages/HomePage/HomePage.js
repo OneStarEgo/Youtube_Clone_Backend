@@ -36,8 +36,8 @@ const HomePage = () => {
       {videos &&
         videos.map((video, index) => (
           <p key={index}>
-             {video.snippet.title} 
-             <Link to={`/video/${video.snippet.videoId}`}><img src={video.snippet.thumbnails.medium.url}/></Link>
+             {video.snippet.title}
+             <Link to={`/video/${video.id.videoId}`}><img src={video.snippet.thumbnails.medium.url}/></Link>
              {video.snippet.description}
           </p>
         ))}

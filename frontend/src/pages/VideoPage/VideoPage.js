@@ -4,14 +4,32 @@ import { API_KEY } from "../../API_KEYS/API_KEY";
 import VideoMapper from "../../components/VideoMapper/VideoMapper";
 import { useParams } from "react-router-dom";
 
+
 const VideoPage = (props) => {
     const [videos, setVideos] = useState([]);
     const { videoId } = useParams();
-    const [vidID, setVidID] = useState({});
-    const getVids = async()=>{
-        await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideo=${videoId}type=video&maxResults=5&key=${API_KEY}`)
-                    .then(res => {setVideos(res.data.items)})
+    const [relatedVideos, setRelatedVideos] = useState([]);
+    const [comments, setComments] = useState([]);
+
+    const getRelatedVids = async()=>{
+        try{
+            let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${API_KEY}&part=snippet`)
+            setRelatedVideos(response.data.items)
+        }catch(error){
+            console.log(error.response.data)
+
+        }
     }
+
+    const getComments = async()=>{
+        try{
+            let response = await axios.get(`https://youtube.googleapis.com/youtube/v3/comments?part=snippet&parentId=${videoId}&key=${API_KEY}`)
+            setComments(response.data)
+        }catch(error){
+            console.log(error.response.data)
+        }
+    }
+
 
     return (
         <div>
@@ -24,9 +42,10 @@ const VideoPage = (props) => {
                 src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`}
                 frameBorder="0"
             ></iframe>
-            <button onClick={()=> {getVids()}}>Get Related Videos</button>
+            <button onClick={()=> {getRelatedVids()}}>Get Related Videos</button>
+            <button onClick={()=> {getComments()}}>Comments</button>
             <div>
-                <VideoMapper videoArray={videos} />
+                <VideoMapper videoArray={relatedVideos} />
             </div>
         </div>
 
