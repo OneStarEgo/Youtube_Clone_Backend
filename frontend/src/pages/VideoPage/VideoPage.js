@@ -21,9 +21,9 @@ const VideoPage = (props) => {
         }
     }
 
-    const getComments = async()=>{
+    const vidComments = async()=>{
         try{
-            let response = await axios.get(`http://127.0.0.1:8000/api/comments/${video_Id}/`)
+            let response = await axios.post(`http://127.0.0.1:8000/api/comments/`)
             setComments(response.data)
         }catch(error){
             console.log(error.response.data)
@@ -43,7 +43,7 @@ const VideoPage = (props) => {
                 frameBorder="0"
             ></iframe>
             <button onClick={()=> {getRelatedVids()}}>Get Related Videos</button>
-            <button onClick={()=> {getComments()}}>Comments</button>
+            <button onClick={()=> {vidComments()}}>Comments</button>
             {/* <div>
                 <CommentSection /> 
             </div> */}

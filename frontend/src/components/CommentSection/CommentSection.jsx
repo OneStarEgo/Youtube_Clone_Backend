@@ -39,5 +39,4 @@ function CommentSection(props) {
             </form>
         </div>
         )
-    }
-}
+    } 

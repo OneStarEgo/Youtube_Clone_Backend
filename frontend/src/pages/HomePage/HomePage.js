@@ -40,6 +40,7 @@ const HomePage = () => {
              <Link to={`/video/${video.id.videoId}`}><img src={video.snippet.thumbnails.medium.url}/></Link>
              {video.snippet.description}
           </p>
+          
         ))}
     </div>
   );
