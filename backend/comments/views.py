@@ -25,6 +25,6 @@ def user_comments(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def video_comments(request, video_id):
-    comments = get_list_or_404;{Comment, video_id==video_id}
+    comments = Comment.objects.filter(video_id = video_id)
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)

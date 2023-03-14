@@ -10,6 +10,8 @@ const VideoPage = (props) => {
     const { videoId, video_id } = useParams();
     const [relatedVideos, setRelatedVideos] = useState([]);
     const [comments, setComments] = useState([]);
+    // const [user, token] = useAuth();
+
 
     const getRelatedVids = async()=>{
         try{
@@ -21,14 +23,27 @@ const VideoPage = (props) => {
         }
     }
 
-    const vidComments = async()=>{
+    const getVidComments = async()=>{
         try{
-            let response = await axios.post(`http://127.0.0.1:8000/api/comments/`)
+            let response = await axios.get(`http://127.0.0.1:8000/api/comments/${videoId}/`)
             setComments(response.data)
+            console.log("Comment Data", response.data)
         }catch(error){
             console.log(error.response.data)
         }
     }
+
+    // const postVidComments = async(newComment)=>{
+    //     try{
+    //         let response = await axios.post('http://127.0.0.1:8000/api/comments/', newComment, {
+    //             headers: {
+    //                 Authorization: 'Bearer ' + token 
+    //             }
+    //         })
+    //     } catch(error){
+    //         console.log(error.message)
+    //     }
+    // }
 
 
     return (
@@ -43,7 +58,7 @@ const VideoPage = (props) => {
                 frameBorder="0"
             ></iframe>
             <button onClick={()=> {getRelatedVids()}}>Get Related Videos</button>
-            <button onClick={()=> {vidComments()}}>Comments</button>
+            <button onClick={()=> {getVidComments()}}>Comments</button>
             {/* <div>
                 <CommentSection /> 
             </div> */}
